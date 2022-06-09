@@ -1,0 +1,89 @@
+<div class="main-content">
+  <div class="container-fluid">
+      <div class="row">
+          <div class="col-md-12">
+              <div class="card">
+                  <div class="card-header card-header-primary">
+                      <h4 class="card-title "><strong>Creative Coin Market</strong> </h4>
+                      <p class="card-category">Top 100 Crypto currencies by Market Cap</p>
+                  </div>
+                  <div class="card-body">
+                      <div class="table-responsive">
+                          <table class="table table-hover">
+                              <thead class=" text-primary">
+                                <th>
+                                    #
+                                </th>
+                                  <th>
+                                      Name 
+                                  </th>
+                                  <th>
+                                      24h % Change
+                                  </th>
+                                  <th>
+                                      7d % Change
+                                </th>
+                                  <th>
+                                      Price
+                                  </th>
+                                  <th>
+                                      Market cap
+                                  </th>
+                                  <th>
+                                      Volume(24h)
+                                </th>
+                                <th>
+                                      
+                                      Circulating Supply
+                                </th>
+                                  
+                              </thead>
+                              <tbody *ngFor="let item of cryptos">
+
+                                  <tr id={{item.id}}>
+                                      <td>
+                                          {{item.cmc_rank}}
+                                      </td>
+                                      <td>
+                                          <img src="/assets/img/{{item.id}}.png" style="height: 24px; width: 24px; margin-right: 10px;" alt="{{item.name}}" >
+                                        <strong>{{item.name}} </strong>{{item.symbol}}
+                                    </td>
+                                      <td>
+                                        <span [ngClass]="{'text-danger': item.quote.USD.percent_change_24h<0}">
+                                        <strong>{{item.quote.USD.percent_change_24h.toFixed(2)+'%'}}</strong>
+                                        </span>
+
+                                      </td>
+                                      <td>
+                                        <span [ngClass]="{'text-danger': item.quote.USD.percent_change_7d<0}">
+                                        <strong>{{item.quote.USD.percent_change_7d.toFixed(2)+'%'}}</strong>
+                                        </span>
+
+                                      </td>
+                                      <td>
+                                        <strong>{{item.quote.USD.price | currency:'USD'}}</strong>
+                                      </td>
+                                      <td>
+                                        <strong>{{item.quote.USD.market_cap | currency:'USD'}}</strong>
+                                        
+                                      </td>
+                                      <td>
+                                        <strong>{{item.quote.USD.volume_24h | currency:'USD'}}</strong>
+                                        
+                                      </td>
+                                      <td>
+                                        <strong>{{item.circulating_supply | number}} </strong>
+                                        
+                                      </td>
+                                      
+                                  
+                              </tbody>
+                          </table>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          
+      </div>
+  </div>
+</div>
